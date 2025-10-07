@@ -1,4 +1,6 @@
 name: Deploy to Contabo Server
+permissions:
+  contents: read
 on:
   push:
     branches: [ "main" ]
