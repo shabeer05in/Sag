@@ -1,8 +1,9 @@
 /*
-Theme Name: SAG4WD
-Theme URI: https://sag4wd.com
-Author: Shabeer Ibrahim
-Description: Custom theme deployed via GitHub Actions
-Version: 1.0
-Text Domain: sag4wd
-*/
+ Theme Name: SAG4WD
+ Theme URI: https://sag4wd.com
+ Author: Shabeer Ibrahim
+ Description: Premium dark Elementor-ready theme for SAG 4x4 customization & accessories.
+ Version: 1.0.0
+ Text Domain: sag4wd
+*/body { margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+h1 { text-align:center; margin-top:100px; }
