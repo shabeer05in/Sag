@@ -1,0 +1,73 @@
+/* Custom Login Page Styles for SAG 4WD Theme */
+body.login {
+  background: #0f1113;
+}
+
+body.login div#login h1 a {
+  background-image: none;
+  text-indent: 0;
+  width: auto;
+  height: auto;
+  font-size: 28px;
+  font-weight: 700;
+  color: #e6e6e6;
+  text-decoration: none;
+}
+
+.login form {
+  background: #121417;
+  border: 1px solid #1e2126;
+  box-shadow: none;
+}
+
+.login label {
+  color: #e6e6e6;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  background: #0f1113;
+  border: 1px solid #1e2126;
+  color: #e6e6e6;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+  border-color: #c7923e;
+  box-shadow: 0 0 0 1px #c7923e;
+}
+
+.login .button-primary {
+  background: #c7923e;
+  border: none;
+  color: #0f1113;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.login .button-primary:hover {
+  background: #b38235;
+}
+
+.login #nav a,
+.login #backtoblog a {
+  color: #e6e6e6;
+}
+
+.login #nav a:hover,
+.login #backtoblog a:hover {
+  color: #c7923e;
+}
+
+.login .message,
+.login .success {
+  background: #121417;
+  border-left: 4px solid #c7923e;
+  color: #e6e6e6;
+}
+
+.login #login_error {
+  background: #121417;
+  border-left: 4px solid #dc3232;
+  color: #e6e6e6;
+}
