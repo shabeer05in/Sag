@@ -1,3 +1,33 @@
+name: Deploy child theme
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'wp-content/themes/sag4wd-child/**'
+      - 'wp-content/mu-plugins/sag4wd-tweaks.php'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Sync files to server
+        run: |
+          rsync -az --delete \
+            wp-content/themes/sag4wd-child/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-child/
+          rsync -az \
+            wp-content/mu-plugins/sag4wd-tweaks.php ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/mu-plugins/
+
+      - name: Clear OPcache (optional)
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "php -r 'if(function_exists(\"opcache_reset\")){ opcache_reset(); echo \"OPcache reset\\n\"; }'"
 name: Deploy to Contabo Server
 permissions:
   contents: read

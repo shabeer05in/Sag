@@ -1,0 +1,15 @@
+/*
+ Theme Name: SAG4WD Child
+ Template: astra
+ Version: 1.0.0
+ Author: SAG4WD
+ Description: Child theme for Astra (SAG 4WD – Off-Road Customization Oman)
+*/
+:root{
+  --brand-bg:#0b0b0c;
+  --brand-acc:#b08d57; /* gold */
+  --brand-text:#e9e9ea;
+}
+body{background:var(--brand-bg);color:var(--brand-text);}
+a{color:var(--brand-acc);}
+a:hover{opacity:.85}
