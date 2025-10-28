@@ -1,0 +1,43 @@
+[27-Oct-2025 23:10:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'sag4wd_user'@'localhost' (using password: YES) in Command line code:1
+Stack trace:
+#0 Command line code(1): mysqli->__construct('localhost', 'sag4wd_user', Object(SensitiveParameterValue), 'sag4wd')
+#1 {main}
+  thrown in Command line code on line 1
+[28-Oct-2025 00:20:02 UTC] PHP Warning:  Cannot modify header information - headers already sent in /var/www/sag4wd/public/wp-includes/pluggable.php on line 1450
+[28-Oct-2025 00:20:02 UTC] PHP Warning:  Cannot modify header information - headers already sent in /var/www/sag4wd/public/wp-includes/pluggable.php on line 1453
+[28-Oct-2025 00:20:03 UTC] PHP Warning:  Cannot modify header information - headers already sent in /var/www/sag4wd/public/wp-includes/pluggable.php on line 1450
+[28-Oct-2025 00:20:03 UTC] PHP Warning:  Cannot modify header information - headers already sent in /var/www/sag4wd/public/wp-includes/pluggable.php on line 1453
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 717
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 728
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 731
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "scheme" in /var/www/sag4wd/public/wp-includes/canonical.php on line 752
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 717
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 728
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "host" in /var/www/sag4wd/public/wp-includes/canonical.php on line 731
+[28-Oct-2025 01:13:49 UTC] PHP Warning:  Undefined array key "scheme" in /var/www/sag4wd/public/wp-includes/canonical.php on line 752
+[28-Oct-2025 01:36:03 UTC] PHP Fatal error:  Uncaught TypeError: ftp_nlist(): Argument #1 ($ftp) must be of type FTP\Connection, null given in /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php:438
+Stack trace:
+#0 /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php(438): ftp_nlist(NULL, '/var/www/sag4wd...')
+#1 /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php(456): WP_Filesystem_FTPext->exists('/var/www/sag4wd...')
+#2 /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php(399): WP_Filesystem_FTPext->is_file('/var/www/sag4wd...')
+#3 /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php(600): WP_Filesystem_FTPext->delete('/var/www/sag4wd...', true)
+#4 /var/www/sag4wd/public/wp-content/plugins/megamenu/classes/style-manager.class.php(1174): WP_Filesystem_FTPext->rmdir('/var/www/sag4wd...', true)
+#5 /var/www/sag4wd/public/wp-includes/class-wp-hook.php(326): Mega_Menu_Style_Manager->delete_cache('Twenty Twenty-F...')
+#6 /var/www/sag4wd/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/sag4wd/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/sag4wd/public/wp-includes/theme.php(3504): do_action('after_switch_th...', 'Twenty Twenty-F...', Object(WP_Theme))
+#9 /var/www/sag4wd/public/wp-includes/class-wp-hook.php(324): check_theme_switched('')
+#10 /var/www/sag4wd/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#11 /var/www/sag4wd/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#12 /var/www/sag4wd/public/wp-settings.php(727): do_action('init')
+#13 phar:///usr/local/bin/wp-cli.phar/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1374): require('/var/www/sag4wd...')
+#14 phar:///usr/local/bin/wp-cli.phar/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1293): WP_CLI\Runner->load_wordpress()
+#15 phar:///usr/local/bin/wp-cli.phar/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(28): WP_CLI\Runner->start()
+#16 phar:///usr/local/bin/wp-cli.phar/vendor/wp-cli/wp-cli/php/bootstrap.php(84): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#17 phar:///usr/local/bin/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php(35): WP_CLI\bootstrap()
+#18 phar:///usr/local/bin/wp-cli.phar/php/boot-phar.php(20): include('phar:///usr/loc...')
+#19 /usr/local/bin/wp-cli.phar(4): include('phar:///usr/loc...')
+#20 {main}
+  thrown in /var/www/sag4wd/public/wp-admin/includes/class-wp-filesystem-ftpext.php on line 438
+[28-Oct-2025 01:47:15 UTC] PHP Fatal error:  Cannot declare class Elementor\Element_Column, because the name is already in use in /var/www/sag4wd/public/wp-content/plugins/elementor/includes/elements/column.php on line 19
+[28-Oct-2025 02:00:04 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: could_not_set, Error message: The cron event list could not be saved., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}

@@ -1,0 +1,21 @@
+# Ignore everything by default
+*
+
+# Keep git files
+!.gitignore
+!.gitattributes
+
+# Track the site code under /public
+!public/
+!public/**
+
+# But DON'T track generated/uploaded stuff
+public/wp-content/uploads/**
+public/wp-content/cache/**
+public/wp-content/upgrade/**
+public/wp-content/debug.log
+
+# Optional: OS/editor junk
+.DS_Store
+Thumbs.db
+*.log
