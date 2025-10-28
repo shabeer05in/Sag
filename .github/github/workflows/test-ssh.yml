@@ -1,0 +1,24 @@
+name: Test SSH
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Test SSH connection to Contabo
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+              -p ${{ secrets.SSH_PORT || '22' }} \
+              ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            echo "SSH OK"
+            whoami
+            hostname
+            ls -la /var/www/sag4wd/public
+          EOF
