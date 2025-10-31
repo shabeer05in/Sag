@@ -58,11 +58,11 @@ function sag4wd_live_scripts() {
         wp_get_theme()->get('Version')
     );
     
-    // Enqueue main JavaScript from assets
+    // Enqueue main JavaScript from assets (vanilla JS, no jQuery needed)
     wp_enqueue_script(
         'sag4wd-live-game',
         get_template_directory_uri() . '/assets/js/game.js',
-        array('jquery'),
+        array(),
         wp_get_theme()->get('Version'),
         true
     );

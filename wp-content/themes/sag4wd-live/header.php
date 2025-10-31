@@ -45,13 +45,14 @@ if (!defined('ABSPATH')) {
                 ?>
             </div><!-- .site-branding -->
 
-            <nav id="site-navigation" class="main-navigation">
+            <nav id="site-navigation" class="main-navigation mega-menu">
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary',
                     'menu_class'     => 'primary-menu',
                     'container'      => false,
                     'fallback_cb'    => false,
+                    'depth'          => 3,
                 ));
                 ?>
             </nav><!-- #site-navigation -->

@@ -149,6 +149,140 @@ a:hover {
 }
 
 /* ==========================================================================
+   5a. Mega Menu
+   ========================================================================== */
+
+.mega-menu {
+    position: relative;
+}
+
+.primary-menu > li {
+    position: relative;
+}
+
+/* Submenu - First Level */
+.primary-menu .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.primary-menu li:hover > .sub-menu {
+    display: block;
+}
+
+.primary-menu .sub-menu li {
+    display: block;
+    border-bottom: 1px solid #1e2126;
+}
+
+.primary-menu .sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.primary-menu .sub-menu a {
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
+.primary-menu .sub-menu a:hover {
+    background: #1b1d21;
+    color: #c7923e;
+}
+
+/* Mega Menu - Wide Dropdown */
+.primary-menu > .menu-item-has-children.mega-menu-item > .sub-menu {
+    min-width: 600px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.mega-menu-item .sub-menu .menu-item-has-children {
+    border: none;
+}
+
+.mega-menu-item .sub-menu .menu-item-has-children > a {
+    font-weight: 700;
+    color: #c7923e;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e2126;
+    margin-bottom: 8px;
+}
+
+.mega-menu-item .sub-menu .sub-menu {
+    position: static;
+    display: block;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.mega-menu-item .sub-menu .sub-menu li {
+    border: none;
+}
+
+.mega-menu-item .sub-menu .sub-menu a {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Menu Item with Description */
+.menu-item-description {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid #c7923e;
+    color: #c7923e;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.menu-toggle:hover {
+    background: #c7923e;
+    color: #0f1113;
+}
+
+/* Dropdown Indicators */
+.primary-menu .menu-item-has-children > a::after {
+    content: " ▾";
+    font-size: 0.8em;
+    margin-left: 4px;
+}
+
+.primary-menu .sub-menu .menu-item-has-children > a::after {
+    content: " ▸";
+    float: right;
+}
+
+.mega-menu-item .sub-menu .menu-item-has-children > a::after {
+    content: "";
+}
+
+/* ==========================================================================
    6. Buttons
    ========================================================================== */
 
@@ -612,4 +746,399 @@ article {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ==========================================================================
+   18. Additional Page Templates (About, Contact, Services)
+   ========================================================================== */
+
+/* About Page */
+.about-sections {
+    display: grid;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.about-section {
+    padding: 2rem;
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+}
+
+.about-section h2 {
+    color: #c7923e;
+    margin-bottom: 1rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.features-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #c7923e;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.about-cta {
+    text-align: center;
+    padding: 3rem;
+    background: #121417;
+    border: 1px solid #c7923e;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+/* Contact Page */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.contact-info {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.contact-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #1e2126;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item h3 {
+    color: #c7923e;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item a {
+    color: #e6e6e6;
+}
+
+.contact-item a:hover {
+    color: #c7923e;
+}
+
+.social-links a {
+    margin-right: 1rem;
+}
+
+.contact-form-container {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #c7923e;
+    font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: #1b1d21;
+    border: 1px solid #1e2126;
+    border-radius: 6px;
+    color: #e6e6e6;
+    font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #c7923e;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.form-note {
+    margin-top: 1rem;
+    opacity: 0.7;
+}
+
+.form-plugin-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #1b1d21;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.contact-map {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+}
+
+.map-container {
+    margin-top: 1rem;
+    padding: 2rem;
+    background: #1b1d21;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Services Page */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.service-card {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #c7923e;
+    box-shadow: 0 8px 16px rgba(199, 146, 62, 0.2);
+}
+
+.service-card.featured {
+    border-color: #c7923e;
+    background: linear-gradient(135deg, #121417 0%, #1b1d21 100%);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h2 {
+    color: #c7923e;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.service-features li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.service-features li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #c7923e;
+}
+
+.services-why-choose {
+    margin: 4rem 0;
+    padding: 3rem;
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.services-why-choose h2 {
+    color: #c7923e;
+    margin-bottom: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    padding: 1.5rem;
+    background: #1b1d21;
+    border-radius: 6px;
+}
+
+.feature-item h3 {
+    color: #c7923e;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.services-cta {
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(135deg, #1b1d21 0%, #121417 100%);
+    border: 2px solid #c7923e;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+.services-cta h2 {
+    color: #c7923e;
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   19. Responsive Updates for New Pages
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   20. Garage Game Module
+   ========================================================================== */
+
+.garage-game {
+    padding: 2rem;
+}
+
+.game-header {
+    margin-bottom: 2rem;
+}
+
+.game-header h3 {
+    margin-bottom: 0.5rem;
+    color: #c7923e;
+}
+
+.game-canvas {
+    margin-bottom: 2rem;
+}
+
+.vehicle-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.showcase-item {
+    background: #1b1d21;
+    border: 2px solid #1e2126;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.showcase-item:hover {
+    border-color: #c7923e;
+    transform: scale(1.05);
+}
+
+.showcase-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-item h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.game-info {
+    min-height: 100px;
+    padding: 1.5rem;
+    background: #1b1d21;
+    border-radius: 10px;
+}
+
+.vehicle-details h4 {
+    margin-bottom: 1rem;
+    color: #c7923e;
+}
+
+.mods-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mods-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1e2126;
+}
+
+.mods-list li:last-child {
+    border-bottom: none;
+}
+
+.mods-list li:before {
+    content: "✓ ";
+    color: #c7923e;
+    font-weight: bold;
+    margin-right: 0.5rem;
 }

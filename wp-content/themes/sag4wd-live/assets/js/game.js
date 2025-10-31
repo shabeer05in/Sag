@@ -5,15 +5,60 @@
  * including dynamic vehicle showcases and interactive features.
  */
 
-(function($) {
+(function() {
     'use strict';
 
     // Initialize when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
+        initMegaMenu();
         initGarageGame();
         initPartsCatalog();
         initVehicleCards();
     });
+
+    /**
+     * Initialize Mega Menu functionality
+     */
+    function initMegaMenu() {
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navigation = document.querySelector('.main-navigation');
+        
+        if (menuToggle && navigation) {
+            menuToggle.addEventListener('click', function() {
+                navigation.classList.toggle('toggled');
+                this.setAttribute('aria-expanded', 
+                    this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                );
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (navigation && !navigation.contains(event.target) && !menuToggle.contains(event.target)) {
+                navigation.classList.remove('toggled');
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        // Add touch support for mobile submenus
+        const menuItems = document.querySelectorAll('.primary-menu .menu-item-has-children > a');
+        menuItems.forEach(function(item) {
+            item.addEventListener('touchstart', function(e) {
+                const parent = this.parentElement;
+                if (!parent.classList.contains('touch-open')) {
+                    e.preventDefault();
+                    // Close other open menus
+                    document.querySelectorAll('.primary-menu .touch-open').forEach(function(el) {
+                        if (el !== parent) el.classList.remove('touch-open');
+                    });
+                    parent.classList.add('touch-open');
+                }
+            });
+        });
+    }
 
     /**
      * Initialize Garage Game/Interactive Module
@@ -165,112 +210,10 @@
 
     // Export functions for potential external use
     window.SAG4WD = {
+        initMegaMenu: initMegaMenu,
         initGarageGame: initGarageGame,
         initPartsCatalog: initPartsCatalog,
         initVehicleCards: initVehicleCards
     };
 
-})(window.jQuery || function() { 
-    // Fallback if jQuery is not loaded
-    return {
-        ready: function(fn) { 
-            if (document.readyState !== 'loading') {
-                fn();
-            } else {
-                document.addEventListener('DOMContentLoaded', fn);
-            }
-        }
-    };
-});
-
-// Additional CSS for game elements (will be injected)
-const gameStyles = `
-.garage-game {
-    padding: 2rem;
-}
-
-.game-header {
-    margin-bottom: 2rem;
-}
-
-.game-header h3 {
-    margin-bottom: 0.5rem;
-    color: #c7923e;
-}
-
-.game-canvas {
-    margin-bottom: 2rem;
-}
-
-.vehicle-showcase {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-}
-
-.showcase-item {
-    background: #1b1d21;
-    border: 2px solid #1e2126;
-    border-radius: 10px;
-    padding: 2rem 1rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.showcase-item:hover {
-    border-color: #c7923e;
-    transform: scale(1.05);
-}
-
-.showcase-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.showcase-item h4 {
-    margin: 0;
-    font-size: 1rem;
-}
-
-.game-info {
-    min-height: 100px;
-    padding: 1.5rem;
-    background: #1b1d21;
-    border-radius: 10px;
-}
-
-.vehicle-details h4 {
-    margin-bottom: 1rem;
-    color: #c7923e;
-}
-
-.mods-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mods-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #1e2126;
-}
-
-.mods-list li:last-child {
-    border-bottom: none;
-}
-
-.mods-list li:before {
-    content: "✓ ";
-    color: #c7923e;
-    font-weight: bold;
-    margin-right: 0.5rem;
-}
-`;
-
-// Inject styles
-if (typeof document !== 'undefined') {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = gameStyles;
-    document.head.appendChild(styleElement);
-}
+})();
