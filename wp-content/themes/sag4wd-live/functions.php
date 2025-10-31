@@ -62,7 +62,7 @@ function sag4wd_live_scripts() {
     wp_enqueue_script(
         'sag4wd-live-game',
         get_template_directory_uri() . '/assets/js/game.js',
-        array(),
+        array('jquery'),
         wp_get_theme()->get('Version'),
         true
     );
