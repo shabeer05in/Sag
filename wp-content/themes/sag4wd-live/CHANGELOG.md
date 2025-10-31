@@ -5,6 +5,34 @@ All notable changes to the SAG4WD Live Theme will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-10-31
+
+### Added
+- Mobile menu toggle button for responsive navigation
+- Login page customization with branded styling (`assets/css/login-style.css`)
+- Touch support for mobile submenu interactions
+- Login page branding functions (logo URL and title customization)
+
+### Enhanced
+- **MegaMenu Integration - Complete Implementation:**
+  - Mobile menu toggle functionality with hamburger button
+  - `.toggled` class for showing/hiding navigation on mobile devices
+  - `.touch-open` class for mobile submenu touch interactions
+  - Enhanced mobile responsive styles for navigation
+  - Improved mega menu mobile behavior with single-column layout on small screens
+- **Header Template:**
+  - Added menu toggle button with accessibility attributes (aria-controls, aria-expanded)
+  - Screen reader text for better accessibility
+- **CSS Improvements:**
+  - Mobile-first navigation styles
+  - Better submenu handling on touch devices
+  - Improved mobile mega menu grid responsiveness
+
+### Fixed
+- Mobile navigation visibility and toggle functionality
+- Mega menu dropdown display on mobile devices
+- Touch interactions for nested menu items
+
 ## [1.0.0] - 2025-10-31
 
 ### Added
