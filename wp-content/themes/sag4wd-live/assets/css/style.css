@@ -723,20 +723,22 @@ article {
         margin-top: 0.5rem;
     }
 
-    /* Hide mega menu grid on mobile, show as list */
+    /* Mega menu on mobile - override desktop grid layout */
     .primary-menu > .menu-item-has-children.mega-menu-item > .sub-menu {
         display: block;
         grid-template-columns: 1fr;
         min-width: 100%;
         padding: 0;
-        visibility: hidden;
-        height: 0;
+        max-height: 0;
         overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
     }
 
+    /* Show mega menu when touched/opened on mobile */
     .primary-menu > .menu-item-has-children.touch-open.mega-menu-item > .sub-menu {
-        visibility: visible;
-        height: auto;
+        max-height: 1000px;
+        opacity: 1;
     }
 
     .header-actions {
