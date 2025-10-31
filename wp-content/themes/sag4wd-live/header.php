@@ -46,7 +46,7 @@ if (!defined('ABSPATH')) {
             </div><!-- .site-branding -->
 
             <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                <span class="screen-reader-text"><?php _e('Menu', 'sag4wd-live'); ?></span>
+                <span class="screen-reader-text"><?php esc_html_e('Menu', 'sag4wd-live'); ?></span>
                 <span class="menu-icon">☰</span>
             </button>
 

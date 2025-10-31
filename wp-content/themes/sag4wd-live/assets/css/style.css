@@ -725,14 +725,18 @@ article {
 
     /* Hide mega menu grid on mobile, show as list */
     .primary-menu > .menu-item-has-children.mega-menu-item > .sub-menu {
-        display: none;
+        display: block;
         grid-template-columns: 1fr;
         min-width: 100%;
         padding: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
     }
 
     .primary-menu > .menu-item-has-children.touch-open.mega-menu-item > .sub-menu {
-        display: block;
+        visibility: visible;
+        height: auto;
     }
 
     .header-actions {
