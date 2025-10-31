@@ -282,6 +282,11 @@ a:hover {
     content: "";
 }
 
+/* Touch Support for Mobile Submenus */
+.primary-menu .touch-open > .sub-menu {
+    display: block;
+}
+
 /* ==========================================================================
    6. Buttons
    ========================================================================== */
@@ -681,8 +686,21 @@ article {
         align-items: flex-start;
     }
 
+    /* Show mobile menu toggle button */
+    .menu-toggle {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    /* Hide navigation by default on mobile */
     .main-navigation {
         width: 100%;
+        display: none;
+    }
+
+    /* Show navigation when toggled */
+    .main-navigation.toggled {
+        display: block;
     }
 
     .primary-menu {
@@ -693,6 +711,28 @@ article {
     .primary-menu a {
         border-top: 1px solid #222;
         padding: 12px 0;
+    }
+
+    /* Mobile submenu styles */
+    .primary-menu .sub-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-left: 3px solid #c7923e;
+        padding-left: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Hide mega menu grid on mobile, show as list */
+    .primary-menu > .menu-item-has-children.mega-menu-item > .sub-menu {
+        display: none;
+        grid-template-columns: 1fr;
+        min-width: 100%;
+        padding: 0;
+    }
+
+    .primary-menu > .menu-item-has-children.touch-open.mega-menu-item > .sub-menu {
+        display: block;
     }
 
     .header-actions {
