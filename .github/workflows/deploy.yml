@@ -1,9 +1,13 @@
-name: Deploy child theme
+name: Deploy SAG4WD Themes to Contabo Server
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ main ]
     paths:
       - 'wp-content/themes/sag4wd-child/**'
+      - 'wp-content/themes/sag4wd-live/**'
       - 'wp-content/mu-plugins/sag4wd-tweaks.php'
 
 jobs:
@@ -18,32 +22,25 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Sync files to server
+      - name: Sync sag4wd-child theme
         run: |
           rsync -az --delete \
             wp-content/themes/sag4wd-child/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-child/
+
+      - name: Sync sag4wd-live theme
+        run: |
+          rsync -az --delete \
+            wp-content/themes/sag4wd-live/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-live/
+
+      - name: Sync mu-plugins
+        run: |
           rsync -az \
             wp-content/mu-plugins/sag4wd-tweaks.php ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/mu-plugins/
 
-      - name: Clear OPcache (optional)
+      - name: Clear OPcache
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "php -r 'if(function_exists(\"opcache_reset\")){ opcache_reset(); echo \"OPcache reset\\n\"; }'"
-name: Deploy to Contabo Server
-permissions:
-  contents: read
-on:
-  push:
-    branches: [ "main" ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            bash /home/sag4wd/deploy/deploy.sh
+      - name: Run custom deploy script (if exists)
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "if [ -f /home/sag4wd/deploy/deploy.sh ]; then bash /home/sag4wd/deploy/deploy.sh; fi" || true
