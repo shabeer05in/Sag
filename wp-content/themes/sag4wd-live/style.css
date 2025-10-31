@@ -1,0 +1,32 @@
+/*
+Theme Name: SAG4WD Live
+Theme URI: https://sag4wd.com
+Author: Shabeer Ibrahim
+Description: Premium dark Elementor-ready theme for SAG 4x4 customization & accessories.
+Version: 1.0.0
+Text Domain: sag4wd-live
+*/
+html,body{margin:0;padding:0;background:#0f1113;color:#e6e6e6}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:16px}
+.site-header{position:sticky;top:0;z-index:1000;background:#121417;border-bottom:1px solid #222}
+.brand{font-weight:700;text-decoration:none;color:#e6e6e6;margin-right:24px}
+.nav .menu{list-style:none;margin:0;padding:0;display:flex;gap:20px}
+.nav .menu a{color:#e6e6e6;text-decoration:none;padding:12px 6px;display:block}
+.nav .menu a:hover{color:#c7923e}
+@media (max-width:768px){.nav .menu{flex-direction:column;gap:0}.nav .menu a{border-top:1px solid #222}}
+h1{margin:40px 0 12px;text-align:center}
+.lead{opacity:.85;text-align:center;max-width:800px;margin:0 auto 24px}
+.btn{display:inline-block;background:#c7923e;color:#0f1113;text-decoration:none;padding:10px 16px;border-radius:6px}
+.btn:hover{opacity:.9}
+.section{padding:32px 0;border-top:1px solid #1b1d21}
+.section h2{text-align:center;margin:0 0 12px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#121417;border:1px solid #1e2126;border-radius:10px;padding:16px}
+.footer{font-size:14px;opacity:.75}
+.user-info{display:flex;gap:12px;align-items:center}
+.user-link,.login-link,.logout-link{color:#e6e6e6;text-decoration:none;padding:8px 12px;display:inline-block}
+.user-link{font-weight:600}
+.user-link:hover,.logout-link:hover{color:#c7923e}
+.login-link{background:#c7923e;color:#0f1113;border-radius:6px;padding:10px 16px}
+.login-link:hover{opacity:.9}

@@ -1,0 +1,7 @@
+This is a placeholder for screenshot.png
+WordPress themes typically include a screenshot.png (880x660px recommended) 
+that shows a preview of the theme in the Appearance > Themes panel.
+
+To add a screenshot:
+1. Create a 880x660px PNG image showing your theme's homepage
+2. Save it as screenshot.png in this directory
