@@ -1,0 +1,615 @@
+/*
+ * SAG4WD Live Theme - Main Stylesheet
+ * Theme styles adapted from original HTML/CSS design
+ */
+
+/* ==========================================================================
+   1. CSS Reset and Base Styles
+   ========================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #0f1113;
+    color: #e6e6e6;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin: 0 0 1rem;
+}
+
+a {
+    color: #c7923e;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   3. Layout & Containers
+   ========================================================================== */
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-content {
+    flex: 1;
+}
+
+/* ==========================================================================
+   4. Header
+   ========================================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #121417;
+    border-bottom: 1px solid #222;
+    padding: 1rem 0;
+}
+
+.site-header .wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.site-branding {
+    margin-right: auto;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.site-title a {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.site-title a:hover {
+    color: #c7923e;
+}
+
+.site-description {
+    margin: 0;
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   5. Navigation
+   ========================================================================== */
+
+.main-navigation {
+    flex: 1;
+}
+
+.primary-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.primary-menu a {
+    color: #e6e6e6;
+    text-decoration: none;
+    padding: 12px 6px;
+    display: block;
+}
+
+.primary-menu a:hover {
+    color: #c7923e;
+}
+
+.primary-menu .current-menu-item > a {
+    color: #c7923e;
+    border-bottom: 2px solid #c7923e;
+}
+
+/* ==========================================================================
+   6. Buttons
+   ========================================================================== */
+
+.btn {
+    display: inline-block;
+    background: #c7923e;
+    color: #0f1113;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background: #c7923e;
+    color: #0f1113;
+}
+
+.btn-secondary {
+    background: #1e2126;
+    color: #e6e6e6;
+    border: 1px solid #c7923e;
+}
+
+/* ==========================================================================
+   7. Header Actions (Login/User Info)
+   ========================================================================== */
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.user-link, .logout-link {
+    color: #e6e6e6;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+.user-link {
+    font-weight: 600;
+}
+
+.user-link:hover, .logout-link:hover {
+    color: #c7923e;
+}
+
+.login-link {
+    background: #c7923e;
+    color: #0f1113;
+    border-radius: 6px;
+    padding: 10px 16px;
+}
+
+.login-link:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   8. Main Content Areas
+   ========================================================================== */
+
+.content-area {
+    padding: 2rem 0;
+}
+
+.site-main {
+    min-height: 400px;
+}
+
+section {
+    padding: 2rem 0;
+}
+
+.page-header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid #1b1d21;
+}
+
+.page-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    opacity: 0.85;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+/* ==========================================================================
+   9. Front Page / Hero Section
+   ========================================================================== */
+
+.hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(180deg, #121417 0%, #0f1113 100%);
+}
+
+.hero-section h1 {
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   10. Services Section
+   ========================================================================== */
+
+.services-section {
+    padding: 4rem 0;
+    border-top: 1px solid #1b1d21;
+}
+
+.services-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.services-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.service-card {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.service-card h3 {
+    color: #c7923e;
+    margin-bottom: 0.75rem;
+}
+
+/* ==========================================================================
+   11. Parts Page
+   ========================================================================== */
+
+.parts-catalog {
+    padding: 3rem 0;
+}
+
+.parts-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 2rem;
+}
+
+.part-card {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.part-card:hover {
+    transform: translateY(-5px);
+    border-color: #c7923e;
+}
+
+.part-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #1b1d21;
+}
+
+.part-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.part-info {
+    padding: 1.5rem;
+}
+
+.part-info h3 {
+    margin-bottom: 0.5rem;
+    color: #c7923e;
+}
+
+.part-info p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   12. Garage Page
+   ========================================================================== */
+
+.garage-content {
+    padding: 3rem 0;
+}
+
+.garage-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin-top: 2rem;
+}
+
+.vehicle-card {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    border-color: #c7923e;
+}
+
+.vehicle-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #1b1d21;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vehicle-info {
+    padding: 1.5rem;
+}
+
+.vehicle-info h3 {
+    margin-bottom: 0.5rem;
+    color: #c7923e;
+}
+
+.vehicle-info p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.garage-interactive {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid #1b1d21;
+    text-align: center;
+}
+
+#garage-game-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+/* ==========================================================================
+   13. Posts & Articles
+   ========================================================================== */
+
+article {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #1b1d21;
+}
+
+.entry-header {
+    margin-bottom: 1.5rem;
+}
+
+.entry-title {
+    margin-bottom: 0.5rem;
+}
+
+.entry-title a {
+    color: #e6e6e6;
+}
+
+.entry-title a:hover {
+    color: #c7923e;
+}
+
+.entry-meta {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+.post-thumbnail {
+    margin-bottom: 1.5rem;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.entry-content {
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1e2126;
+    color: #c7923e;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.read-more:hover {
+    background: #c7923e;
+    color: #0f1113;
+}
+
+/* ==========================================================================
+   14. Sidebar
+   ========================================================================== */
+
+.widget-area {
+    padding: 2rem 0;
+}
+
+.widget {
+    background: #121417;
+    border: 1px solid #1e2126;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.widget-title {
+    margin-bottom: 1rem;
+    color: #c7923e;
+}
+
+/* ==========================================================================
+   15. Footer
+   ========================================================================== */
+
+.site-footer {
+    background: #0a0b0d;
+    border-top: 1px solid #1b1d21;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.site-info {
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.75;
+}
+
+.site-info p {
+    margin-bottom: 0.5rem;
+}
+
+.site-info a {
+    color: #c7923e;
+}
+
+/* ==========================================================================
+   16. Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .site-header .wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-navigation {
+        width: 100%;
+    }
+
+    .primary-menu {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .primary-menu a {
+        border-top: 1px solid #222;
+        padding: 12px 0;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .services-grid,
+    .parts-grid,
+    .garage-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   17. Utility Classes
+   ========================================================================== */
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.alignleft {
+    float: left;
+    margin-right: 1.5rem;
+}
+
+.alignright {
+    float: right;
+    margin-left: 1.5rem;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
