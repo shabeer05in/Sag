@@ -282,6 +282,11 @@ a:hover {
     content: "";
 }
 
+/* Touch Support for Mobile Submenus */
+.primary-menu .touch-open > .sub-menu {
+    display: block;
+}
+
 /* ==========================================================================
    6. Buttons
    ========================================================================== */
@@ -681,8 +686,25 @@ article {
         align-items: flex-start;
     }
 
+    /* Show mobile menu toggle button */
+    .menu-toggle {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    /* Navigation stays visible but menu hidden by default on mobile */
     .main-navigation {
         width: 100%;
+    }
+    
+    /* Hide the actual menu on mobile */
+    .primary-menu {
+        display: none;
+    }
+
+    /* Show menu when navigation is toggled */
+    .main-navigation.toggled .primary-menu {
+        display: flex;
     }
 
     .primary-menu {
@@ -693,6 +715,34 @@ article {
     .primary-menu a {
         border-top: 1px solid #222;
         padding: 12px 0;
+    }
+
+    /* Mobile submenu styles */
+    .primary-menu .sub-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-left: 3px solid #c7923e;
+        padding-left: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Mega menu on mobile - override desktop grid layout */
+    .primary-menu > .menu-item-has-children.mega-menu-item > .sub-menu {
+        display: block;
+        grid-template-columns: 1fr;
+        min-width: 100%;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Show mega menu when touched/opened on mobile */
+    .primary-menu > .menu-item-has-children.touch-open.mega-menu-item > .sub-menu {
+        max-height: 1000px;
+        opacity: 1;
     }
 
     .header-actions {

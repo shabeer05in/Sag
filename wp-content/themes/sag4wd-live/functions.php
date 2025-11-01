@@ -84,3 +84,26 @@ function sag4wd_live_widgets_init() {
     ));
 }
 add_action('widgets_init', 'sag4wd_live_widgets_init');
+
+/**
+ * Customize login page
+ */
+function sag4wd_live_login_logo_url() {
+    return home_url();
+}
+add_filter('login_headerurl', 'sag4wd_live_login_logo_url');
+
+function sag4wd_live_login_logo_url_title() {
+    return get_bloginfo('name');
+}
+add_filter('login_headertext', 'sag4wd_live_login_logo_url_title');
+
+function sag4wd_live_login_stylesheet() {
+    wp_enqueue_style(
+        'sag4wd-live-login',
+        get_template_directory_uri() . '/assets/css/login-style.css',
+        array(),
+        wp_get_theme()->get('Version')
+    );
+}
+add_action('login_enqueue_scripts', 'sag4wd_live_login_stylesheet');

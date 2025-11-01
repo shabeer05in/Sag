@@ -8,14 +8,23 @@ SAG4WD Live Theme is a custom-built WordPress theme designed specifically for th
 
 ## Features
 
-- **Responsive Design**: Fully responsive and mobile-friendly
+- **Responsive Design**: Fully responsive and mobile-friendly with touch support
+- **MegaMenu Navigation**: Multi-level dropdown menus with mega menu support
+  - Mobile-friendly hamburger menu
+  - Touch-optimized submenu interactions
+  - 3-column mega menu layout for complex navigation
 - **Custom Templates**: 
   - Garage Page (page-garage.php) - Showcase vehicle builds with interactive elements
   - Parts Page (page-parts.php) - Display parts catalog
+  - Services Page (page-services.php) - Display services offered
+  - Contact Page (page-contact.php) - Contact form and information
+  - About Page (page-about.php) - About the business
 - **Interactive Elements**: JavaScript-powered interactive garage explorer
 - **Dark Theme**: Professional dark color scheme optimized for automotive content
+- **Custom Login Page**: Branded WordPress login page matching theme design
 - **SEO Ready**: Clean, semantic HTML5 markup
-- **Translation Ready**: All strings are translatable
+- **Translation Ready**: All strings are translatable (text domain: sag4wd-live)
+- **Accessibility**: WCAG considerations with proper ARIA labels
 
 ## Installation
 
@@ -29,16 +38,17 @@ SAG4WD Live Theme is a custom-built WordPress theme designed specifically for th
 sag4wd-live/
 ├── assets/
 │   ├── css/
-│   │   └── style.css          # Main theme styles
+│   │   ├── style.css           # Main theme styles (~1184 lines)
+│   │   └── login-style.css     # Custom login page styles
 │   ├── js/
-│   │   └── game.js            # Interactive elements
+│   │   └── game.js             # Interactive elements & MegaMenu
 │   └── images/
 │       └── README.md
 ├── template-parts/
-│   ├── content.php            # Post content template
-│   └── content-none.php       # No results template
-├── style.css                  # Theme header (required)
-├── functions.php              # Theme functions
+│   ├── content.php             # Post content template
+│   └── content-none.php        # No results template
+├── style.css                   # Theme header (required)
+├── functions.php               # Theme functions
 ├── header.php                 # Header template
 ├── footer.php                 # Footer template
 ├── index.php                  # Main template
@@ -87,7 +97,14 @@ The theme can be customized through:
 
 ## Version History
 
-### 1.0.0
+### 1.0.1 - 2025-10-31
+- Complete MegaMenu integration with mobile support
+- Added mobile menu toggle button
+- Touch support for mobile submenus
+- Custom login page styling
+- Enhanced responsive navigation
+
+### 1.0.0 - 2025-10-31
 - Initial release
 - Core theme structure
 - Garage and Parts templates
