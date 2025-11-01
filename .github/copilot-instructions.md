@@ -1,5 +1,55 @@
 # Copilot Coding Agent Instructions
 
+## How to Work with Copilot
+
+### Task Scoping Guidelines
+
+**Copilot excels at:**
+- Bug fixes in theme files (PHP, CSS, JavaScript)
+- Adding new page templates following existing patterns
+- Updating documentation
+- Implementing accessibility improvements
+- Adding new features to existing pages
+- Security fixes and vulnerability patches
+- Code refactoring for better performance
+- Adding WordPress hooks and filters
+
+**Not recommended for Copilot:**
+- Complex database migrations
+- Major architectural changes
+- Production deployment configuration changes
+- Changes requiring deep business logic understanding
+- Tasks requiring manual testing on live WordPress installation
+
+### Writing Good Issues for Copilot
+
+**Good issue example:**
+```
+Title: Add contact form to Contact page
+Description: Add a contact form to page-contact.php using WordPress's 
+built-in form functionality. Include fields for name, email, phone, 
+and message. Follow existing styling in assets/css/style.css.
+Acceptance Criteria:
+- Form validates input before submission
+- Includes proper WordPress nonces for security
+- Follows existing dark theme styling with gold accents
+- Mobile responsive
+```
+
+**Poor issue example:**
+```
+Title: Fix the website
+Description: Something is broken, please fix it.
+```
+
+### Iteration and Feedback
+
+- Review Copilot's pull requests like any team member's work
+- Use PR comments to request changes or improvements
+- Mention @copilot in comments for clarifications
+- Expect to iterate - initial implementation may need refinement
+- Validate all changes in a local WordPress environment before merging
+
 ## Project Overview
 
 This repository contains the **SAG4WD WordPress Theme** - a custom WordPress theme for SAG 4 Wheel Drive, a premium 4x4 customization and off-road accessories business based in Muscat, Oman.
@@ -151,10 +201,15 @@ This is a pure PHP/HTML/CSS/JS WordPress theme with **no build process**. Files 
 3. **Testing**
    - No automated testing infrastructure exists
    - Manual testing required:
-     - Verify theme activates without errors
-     - Check responsive design on multiple screen sizes
-     - Test all interactive features
-     - Validate accessibility features
+     - Verify theme activates without errors in WordPress admin
+     - Check responsive design on multiple screen sizes (mobile: <768px, tablet: 768-1024px, desktop: >1024px)
+     - Test all interactive features (navigation, forms, buttons)
+     - Validate accessibility features (ARIA labels, keyboard navigation)
+     - Test in multiple browsers (Chrome, Firefox, Safari)
+   - **For Copilot**: After making changes, describe how the feature should be tested manually
+   - Always check PHP syntax: `php -l filename.php`
+   - Validate HTML at key breakpoints
+   - Test on actual WordPress installation when possible
 
 4. **Documentation**
    - Update relevant `.md` files when making significant changes
@@ -243,6 +298,69 @@ This is a pure PHP/HTML/CSS/JS WordPress theme with **no build process**. Files 
    - Location: Maabilah Industrial Area, Muscat, Oman
    - Contact: +968 9966 9903 / +968 9512 1532
    - Design: Dark theme with gold accents, off-road/automotive focus
+
+## Code Review and Quality Standards
+
+### Copilot's Expected Behavior
+
+When working on issues in this repository, Copilot should:
+
+1. **Understand context first**
+   - Review relevant theme files before making changes
+   - Understand the existing code structure and patterns
+   - Check for similar implementations in other theme files
+
+2. **Make minimal, surgical changes**
+   - Only modify the specific files and lines needed
+   - Preserve existing working code
+   - Match existing code style and formatting
+
+3. **Follow WordPress best practices**
+   - Use WordPress functions instead of raw PHP where possible
+   - Implement proper security measures (nonces, escaping, sanitization)
+   - Use hooks and filters appropriately
+   - Follow WordPress template hierarchy
+
+4. **Document changes clearly**
+   - Explain what changed and why in PR description
+   - Include manual testing instructions
+   - Note any potential side effects or areas to watch
+
+5. **Handle errors gracefully**
+   - If uncertain about approach, ask for clarification
+   - Provide alternatives if initial approach isn't feasible
+   - Explain limitations or constraints encountered
+
+### Pull Request Requirements
+
+When Copilot creates a PR, it should:
+1. **Follow minimal change principle** - Only modify what's necessary
+2. **Include clear description** - Explain what changed and why
+3. **List testing steps** - Describe how to manually test changes
+4. **Reference the issue** - Link to the original issue being resolved
+5. **Preserve existing functionality** - Don't break working features
+6. **Follow WordPress coding standards** - Use proper escaping, sanitization, and WordPress functions
+
+### Code Quality Checklist
+
+Before finalizing any changes:
+- [ ] All PHP files include `ABSPATH` security check
+- [ ] User-facing strings use translation functions (`__()` or `_e()`)
+- [ ] All output is properly escaped (`esc_html()`, `esc_attr()`, `esc_url()`)
+- [ ] Functions are prefixed with `sag4wd_live_`
+- [ ] Code follows existing style and indentation
+- [ ] No debug code (var_dump, console.log) left in files
+- [ ] Comments are minimal and meaningful
+- [ ] Mobile responsiveness maintained
+- [ ] No new dependencies added unless absolutely necessary
+
+### Security Validation
+
+- All user input is sanitized
+- Database queries use `$wpdb->prepare()`
+- Nonces are used for form submissions
+- No sensitive data in code (API keys, passwords)
+- File permissions and uploads are validated
 
 ## Resources
 
