@@ -1,19 +1,64 @@
-name: Deploy to Contabo Server
+name: Deploy SAG4WD Themes to Contabo Server
 permissions:
   contents: read
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
+    paths:
+      - 'wp-content/themes/sag4wd-child/**'
+      - 'wp-content/themes/sag4wd-live/**'
+      - 'wp-content/mu-plugins/sag4wd-tweaks.php'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Run deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            bash /home/sag4wd/deploy/deploy.sh
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Sync sag4wd-child theme
+        run: |
+          rsync -az --delete \
+            wp-content/themes/sag4wd-child/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-child/
+
+      - name: Sync sag4wd-live theme
+        run: |
+          rsync -az --delete \
+            wp-content/themes/sag4wd-live/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-live/
+
+      - name: Sync mu-plugins
+        run: |
+          rsync -az \
+            wp-content/mu-plugins/sag4wd-tweaks.php ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/wp-content/mu-plugins/
+
+      - name: Clear OPcache and reload services
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
+            php -r 'if(function_exists(\"opcache_reset\")){ opcache_reset(); echo \"OPcache reset\\n\"; }' && \
+            sudo systemctl reload php-fpm 2>/dev/null || sudo systemctl reload php7.4-fpm 2>/dev/null || sudo systemctl reload php8.0-fpm 2>/dev/null || true && \
+            sudo systemctl restart httpd 2>/dev/null || sudo systemctl restart apache2 2>/dev/null || true && \
+            echo 'Services reloaded successfully'
+          "
+
+      - name: Run custom deploy script (if exists)
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "if [ -f /home/sag4wd/deploy/deploy.sh ]; then bash /home/sag4wd/deploy/deploy.sh; fi" || true
+
+      - name: Verify deployment
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
+            echo 'Verifying deployment...' && \
+            if [ -d ${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-live ]; then
+              echo '✓ SAG4WD Live theme deployed successfully'
+              ls -lh ${{ secrets.REMOTE_PATH }}/wp-content/themes/sag4wd-live/ | head -10
+            else
+              echo '✗ Deployment verification failed'
+              exit 1
+            fi
+          "

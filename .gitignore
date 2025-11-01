@@ -1,0 +1,33 @@
+# WordPress core & junk
+wp-admin/
+wp-includes/
+*.log
+*.sql
+*.tar
+*.zip
+
+# Don’t track uploads or caches
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+wp-content/ai1wm-backups/
+wp-content/litespeed/
+wp-content/wflogs/
+wp-content/et-cache/
+
+# Keep only our custom stuff inside wp-content
+!wp-content/
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/themes/
+wp-content/plugins/*
+!wp-content/plugins/index.php
+!wp-content/mu-plugins/sag4wd-tweaks.php
+!wp-content/themes/sag4wd-child/**
+!wp-content/themes/sag4wd-live/**
+
+# Node/composer noise (if you add tooling later)
+node_modules/
+vendor/
+.env

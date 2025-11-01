@@ -24,3 +24,9 @@ h1{margin:40px 0 12px;text-align:center}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .card{background:#121417;border:1px solid #1e2126;border-radius:10px;padding:16px}
 .footer{font-size:14px;opacity:.75}
+.user-info{display:flex;gap:12px;align-items:center}
+.user-link,.login-link,.logout-link{color:#e6e6e6;text-decoration:none;padding:8px 12px;display:inline-block}
+.user-link{font-weight:600}
+.user-link:hover,.logout-link:hover{color:#c7923e}
+.login-link{background:#c7923e;color:#0f1113;border-radius:6px;padding:10px 16px}
+.login-link:hover{opacity:.9}
