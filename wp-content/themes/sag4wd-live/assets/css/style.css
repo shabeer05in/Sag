@@ -692,15 +692,19 @@ article {
         margin-bottom: 1rem;
     }
 
-    /* Hide navigation by default on mobile */
+    /* Navigation stays visible but menu hidden by default on mobile */
     .main-navigation {
         width: 100%;
+    }
+    
+    /* Hide the actual menu on mobile */
+    .primary-menu {
         display: none;
     }
 
-    /* Show navigation when toggled */
-    .main-navigation.toggled {
-        display: block;
+    /* Show menu when navigation is toggled */
+    .main-navigation.toggled .primary-menu {
+        display: flex;
     }
 
     .primary-menu {

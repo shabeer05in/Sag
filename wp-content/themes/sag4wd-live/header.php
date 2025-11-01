@@ -45,12 +45,11 @@ if (!defined('ABSPATH')) {
                 ?>
             </div><!-- .site-branding -->
 
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                <span class="screen-reader-text"><?php esc_html_e('Menu', 'sag4wd-live'); ?></span>
-                <span class="menu-icon">☰</span>
-            </button>
-
             <nav id="site-navigation" class="main-navigation mega-menu">
+                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                    <span class="screen-reader-text"><?php esc_html_e('Menu', 'sag4wd-live'); ?></span>
+                    <span class="menu-icon">☰</span>
+                </button>
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary',
