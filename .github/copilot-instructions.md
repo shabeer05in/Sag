@@ -26,9 +26,9 @@
 **Good issue example:**
 ```
 Title: Add contact form to Contact page
-Description: Add a contact form to page-contact.php using WordPress's 
-built-in form functionality. Include fields for name, email, phone, 
-and message. Follow existing styling in assets/css/style.css.
+Description: Add a contact form to page-contact.php using WordPress's built-in 
+form functionality. Include fields for name, email, phone, and message. 
+Follow existing styling in assets/css/style.css.
 Acceptance Criteria:
 - Form validates input before submission
 - Includes proper WordPress nonces for security
@@ -344,23 +344,29 @@ When Copilot creates a PR, it should:
 ### Code Quality Checklist
 
 Before finalizing any changes:
+
+**WordPress Standards:**
 - [ ] All PHP files include `ABSPATH` security check
 - [ ] User-facing strings use translation functions (`__()` or `_e()`)
 - [ ] All output is properly escaped (`esc_html()`, `esc_attr()`, `esc_url()`)
 - [ ] Functions are prefixed with `sag4wd_live_`
+
+**Code Quality:**
 - [ ] Code follows existing style and indentation
 - [ ] No debug code (var_dump, console.log) left in files
 - [ ] Comments are minimal and meaningful
+
+**Responsiveness & Dependencies:**
 - [ ] Mobile responsiveness maintained
 - [ ] No new dependencies added unless absolutely necessary
 
 ### Security Validation
 
-- All user input is sanitized
-- Database queries use `$wpdb->prepare()`
-- Nonces are used for form submissions
-- No sensitive data in code (API keys, passwords)
-- File permissions and uploads are validated
+- All user input is sanitized using `sanitize_text_field()`, `sanitize_email()`, etc.
+- Database queries use `$wpdb->prepare()` for parameterization
+- Forms use nonces for CSRF protection (`wp_nonce_field()` and `wp_verify_nonce()`)
+- No sensitive data (API keys, passwords, credentials) in code
+- File uploads validate type and permissions
 
 ## Resources
 
